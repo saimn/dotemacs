@@ -1,0 +1,14 @@
+*.elc
+.org-id-locations
+.smex-items
+abbrev_defs
+ac-comphist.dat
+anything-*
+auto-save-list/
+backups/
+customize.el
+elpa/
+eshell/
+init-priv.el
+places
+tramp
