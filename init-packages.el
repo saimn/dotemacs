@@ -10,7 +10,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
                                   starter-kit-eshell starter-kit-js
-                                  zenburn-theme
+                                  deft zenburn-theme
                                   popwin smart-tab autopair yasnippet
                                   magit magithub markdown-mode rainbow-mode
                                   less-css-mode lua-mode)
