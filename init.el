@@ -57,8 +57,9 @@
 ;;(setq frame-background-mode 'dark)
 (load-theme 'zenburn t)
 
-(require 'init-edit)
 (require 'init-completion)
+(require 'init-edit)
+(require 'init-functions)
 
 ;;----------------------------------------------------------------------
 ;; Keyboard shortcuts
@@ -262,6 +263,12 @@
 ;;----------------------------------------------------------------------
 ;; Languages
 ;;----------------------------------------------------------------------
+
+;; (require 'init-c)         ; C
+(require 'init-idlwave)   ; IDL - IDLwave
+;; (require 'init-latex)     ; LaTeX mode
+;; (require 'init-lisp)      ; Emacs-Lisp
+(require 'init-python)    ; Python
 
 ;; Lua
 (setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))

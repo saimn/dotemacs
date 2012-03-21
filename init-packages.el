@@ -12,7 +12,7 @@
                                   starter-kit-eshell starter-kit-js
                                   deft zenburn-theme
                                   popwin smart-tab autopair yasnippet
-                                  browse-kill-ring
+                                  browse-kill-ring flymake-cursor
                                   magit magithub markdown-mode rainbow-mode
                                   less-css-mode lua-mode)
   "A list of packages to ensure are installed at launch.")
