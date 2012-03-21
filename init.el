@@ -57,9 +57,6 @@
 ;;(setq frame-background-mode 'dark)
 (load-theme 'zenburn t)
 
-(require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
-
 (require 'init-edit)
 (require 'init-completion)
 
@@ -131,3 +128,166 @@
 (global-set-key [\C-f4] 'previous-error)
 (global-set-key [\C-f9] 'recompile)
 (global-set-key [\C-f10] 'kill-compilation)
+
+;;----------------------------------------------------------------------
+;; Buffers
+;;----------------------------------------------------------------------
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("Config" (filename . ".emacs.d/"))
+               ("Dired" (mode . dired-mode))
+               ("Emacs" (or
+                         (name . "^\\*scratch\\*$")
+                         (name . "^\\*Buffer List\\*$")
+                         (name . "^\\*Completions\\*$")
+                         (name . "^\\*Messages\\*$")
+                         (name . "^\\*vc\\*$")
+                         (name . "^\\*Warnings\\*$")))
+               ("IDL" (or
+                       (mode . idlwave-mode)
+                       (name . "^\\*idl\\*$")))
+               ("Org" (or
+                       (name . "^\\*Calendar\\*$")
+                       (name . "^diary$")
+                       (mode . org-mode)
+                       (mode . muse-mode)))
+               ("Programming" (or
+                               (mode . python-mode)
+                               (mode . lua-mode)
+                               (mode . haskell-mode)
+                               (name . "\\*Python.*\\*")
+                               (name . "\\*haskell.*\\*")
+                               (mode . emacs-lisp-mode)
+                               (mode . sh-mode)))
+               ("Writing" (or
+                           (mode . tex-mode)
+                           (mode . latex-mode)
+                           (mode . markdown-mode)
+                           (mode . rst-mode)))
+               ("Mail" (or
+                        (mode . message-mode)
+                        (mode . mail-mode)))
+               ))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
+;;----------------------------------------------------------------------
+;; Load modules / modes
+;;----------------------------------------------------------------------
+;; Show images et compressed files
+(setq auto-image-file-mode t)
+(setq auto-compression-mode t)
+
+;; Ack
+;; (autoload 'ack-same "full-ack" nil t)
+;; (autoload 'ack "full-ack" nil t)
+;; (autoload 'ack-find-same-file "full-ack" nil t)
+;; (autoload 'ack-find-file "full-ack" nil t)
+
+;; Tramp (remote files editing)
+(setq tramp-default-method "ssh")
+
+;; distinguish files with the same name
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+
+(require 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
+
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+
+;; Version Control
+(autoload 'magit-status "magit" nil t)
+(autoload 'svn-status "psvn" nil t)
+(setq vc-svn-diff-switches 'nil)
+(setq vc-diff-switches '("-bBu"))
+
+;; Mail
+(defun my-mail-mode-hook ()
+  (auto-fill-mode 1)
+  (setq fill-column 72)
+  (set compose-mail-check-user-agent nil)
+  (flyspell-mode)
+  ;; (abbrev-mode 1)
+  (setq sc-nested-citation-p t)
+  (local-set-key "\C-Xk" 'server-edit))
+(add-hook 'mail-mode-hook 'my-mail-mode-hook)
+;; (add-hook 'mail-citation-hook 'sc-cite-original)
+
+;; (autoload 'sc-cite-original "supercite" nil t)
+(autoload 'muttrc-mode "muttrc-mode.el"
+  "Major mode to edit muttrc files" t)
+(setq auto-mode-alist
+      (append '(("muttrc\\'" . muttrc-mode))
+              auto-mode-alist))
+
+;; pkgbuild
+(autoload 'pkgbuild-mode "pkgbuild-mode" nil t)
+
+;;----------------------------------------------------------------------
+;; Pymacs and Rope for Python
+;;----------------------------------------------------------------------
+(when (require 'pymacs nil 'noerror)
+  ;; (eval-after-load "pymacs"
+  ;;  '(add-to-list 'pymacs-load-path "~/.emacs.d/site-lisp/"))
+  (setq pymacs-load-path (list (expand-file-name "~/.emacs.d/vendor")))
+
+  ;; setup pymacs
+  (autoload 'pymacs-apply "pymacs")
+  (autoload 'pymacs-call "pymacs")
+  (autoload 'pymacs-eval "pymacs" nil t)
+  (autoload 'pymacs-exec "pymacs" nil t)
+  (autoload 'pymacs-load "pymacs" nil t)
+
+  ;; some python tools
+  (pymacs-load "python")
+  ;; python refactoring and support
+  (pymacs-load "ropemacs" "rope-")
+  ;; shortcut function to insert license headers
+  (pymacs-load "license")
+
+  ;; setup ropemacs
+  (setq ropemacs-guess-project t
+        ropemacs-enable-autoimport t
+        ropemacs-autoimport-modules '("os" "os.path" "sys")
+        ropemacs-global-prefix "C-c p"
+        ropemacs-enable-shortcuts nil))
+
+;;----------------------------------------------------------------------
+;; Languages
+;;----------------------------------------------------------------------
+
+;; Lua
+(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+
+;; Set mode for each file type
+(setq auto-mode-alist
+  (append
+    '(("\\.[kz]?sh\\'" . sh-mode)
+      ("bash" . sh-mode)
+      ("profile" . sh-mode)
+      ("[Mm]akefile\\'" . makefile-mode)
+      ("\\.mk\\'" . makefile-mode)
+      ("\\.p[lm]\\'" . cperl-mode)
+      ("\\.conf\\'" . conf-mode)
+      ("\\rc\\'" . conf-mode)
+      ("/mutt" . mail-mode)
+      ("\\PKGBUILD\\'" . pkgbuild-mode)
+     )
+     auto-mode-alist
+  )
+  )
+
+;;----------------------------------------------------------------------------
+;; Private configuration
+;;----------------------------------------------------------------------------
+(if (file-readable-p
+     (expand-file-name "~/.emacs.d/init-priv.el"))
+    (require 'init-priv))
