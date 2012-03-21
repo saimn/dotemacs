@@ -26,18 +26,14 @@
             (copy-sequence (normal-top-level-add-to-load-path '(".")))
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
-
 (setq load-path (cons (expand-file-name "~/.emacs.d") load-path))
 
 ;; backup files
 ;; (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
-
-(setq
- backup-by-copying t      ; don't clobber symlinks
- temporary-file-directory "~/.emacs.d/tmp/"
- backup-directory-alist '(("." . "~/.emacs.d/tmp/"))
- )
+(setq backup-by-copying t      ; don't clobber symlinks
+      temporary-file-directory "~/.emacs.d/tmp/"
+      backup-directory-alist '(("." . "~/.emacs.d/tmp/")))
 
 ;; Customize file
 (setq custom-file (expand-file-name "~/.emacs.d/customize.el"))
@@ -89,9 +85,7 @@
       ("/mutt" . mail-mode)
       ("\\PKGBUILD\\'" . pkgbuild-mode)
      )
-     auto-mode-alist
-  )
-  )
+     auto-mode-alist))
 
 ;;----------------------------------------------------------------------
 ;; Keyboard shortcuts
