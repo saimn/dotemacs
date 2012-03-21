@@ -12,6 +12,7 @@
 (set-language-environment 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(setq browse-url-browser-function 'browse-url-firefox)
 
 ;;----------------------------------------------------------------------------
 ;; paths
@@ -52,9 +53,12 @@
 
 (require 'init-packages)
 
+(setq color-theme-is-global t)
+;;(setq frame-background-mode 'dark)
 (load-theme 'zenburn t)
 
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
 (require 'init-edit)
+(require 'init-completion)
