@@ -14,7 +14,7 @@
                                   popwin smart-tab autopair yasnippet
                                   browse-kill-ring flymake-cursor
                                   magit magithub markdown-mode rainbow-mode
-                                  less-css-mode lua-mode)
+                                  less-css-mode lua-mode php-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

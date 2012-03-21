@@ -59,7 +59,39 @@
 
 (require 'init-completion)
 (require 'init-edit)
+
+;;(require 'init-c)         ; C
 (require 'init-functions)
+(require 'init-idlwave)   ; IDL - IDLwave
+;; (require 'init-latex)     ; LaTeX mode
+;; (require 'init-lisp)      ; Emacs-Lisp
+(require 'init-org)
+(require 'init-python)    ; Python
+(require 'init-spell)
+(require 'init-tags)      ; Ctags
+(require 'init-text)      ; Markdown, rst, bbcode, ...
+(require 'init-web)       ; PHP - HTML - CSS
+
+;; Lua
+(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+
+;; Set mode for each file type
+(setq auto-mode-alist
+  (append
+    '(("\\.[kz]?sh\\'" . sh-mode)
+      ("bash" . sh-mode)
+      ("profile" . sh-mode)
+      ("[Mm]akefile\\'" . makefile-mode)
+      ("\\.mk\\'" . makefile-mode)
+      ("\\.conf\\'" . conf-mode)
+      ("\\rc\\'" . conf-mode)
+      ("/mutt" . mail-mode)
+      ("\\PKGBUILD\\'" . pkgbuild-mode)
+     )
+     auto-mode-alist
+  )
+  )
 
 ;;----------------------------------------------------------------------
 ;; Keyboard shortcuts
@@ -259,38 +291,6 @@
         ropemacs-autoimport-modules '("os" "os.path" "sys")
         ropemacs-global-prefix "C-c p"
         ropemacs-enable-shortcuts nil))
-
-;;----------------------------------------------------------------------
-;; Languages
-;;----------------------------------------------------------------------
-
-;; (require 'init-c)         ; C
-(require 'init-idlwave)   ; IDL - IDLwave
-;; (require 'init-latex)     ; LaTeX mode
-;; (require 'init-lisp)      ; Emacs-Lisp
-(require 'init-python)    ; Python
-
-;; Lua
-(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-
-;; Set mode for each file type
-(setq auto-mode-alist
-  (append
-    '(("\\.[kz]?sh\\'" . sh-mode)
-      ("bash" . sh-mode)
-      ("profile" . sh-mode)
-      ("[Mm]akefile\\'" . makefile-mode)
-      ("\\.mk\\'" . makefile-mode)
-      ("\\.p[lm]\\'" . cperl-mode)
-      ("\\.conf\\'" . conf-mode)
-      ("\\rc\\'" . conf-mode)
-      ("/mutt" . mail-mode)
-      ("\\PKGBUILD\\'" . pkgbuild-mode)
-     )
-     auto-mode-alist
-  )
-  )
 
 ;;----------------------------------------------------------------------------
 ;; Private configuration
