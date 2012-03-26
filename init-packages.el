@@ -12,6 +12,7 @@
                       starter-kit-bindings starter-kit-eshell
                       starter-kit-lisp starter-kit-js
                       autopair
+                      auto-complete
                       browse-kill-ring
                       deft
                       flymake-cursor

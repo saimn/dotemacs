@@ -67,17 +67,17 @@
 
 (require 'smart-tab)
 
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
-;; (ac-config-default)
-;; (add-to-list 'ac-modes 'text-mode)
-;; (add-to-list 'ac-modes 'idlwave-mode)
-;; (add-to-list 'ac-modes 'less-css-mode)
-;; (global-auto-complete-mode t)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict")
+(ac-config-default)
+(add-to-list 'ac-modes 'text-mode)
+(add-to-list 'ac-modes 'idlwave-mode)
+(add-to-list 'ac-modes 'less-css-mode)
+(global-auto-complete-mode t)
 
 ;; C-n/C-p to select candidates
-;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
-;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
 ;; enable autopair in all buffers
 (require 'autopair)
