@@ -81,16 +81,9 @@
             ;; disable highlighting of unknown includes
             ;; (semantic-toggle-decoration-style "semantic-decoration-on-includes" nil)
 
-            (add-hook 'local-write-file-hooks 'untabify-buffer)
-
-            ;; (add-hook 'local-write-file-hooks
-            ;;           '(lambda()
-            ;;              (save-excursion
-            ;;                (untabify (point-min) (point-max))
-            ;;                (delete-trailing-whitespace))))
+            ;; (add-hook 'local-write-file-hooks 'untabify-buffer)
 
             (eldoc-mode t)
-            (show-paren-mode 1)
             (auto-fill-mode 1)
             (setq tab-width 4)
             (setq mode-name "py")
@@ -104,4 +97,3 @@
             (define-key python-mode-map "\C-ct" 'rope-show-calltip)))
 
 (provide 'init-python)
-
