@@ -1,3 +1,16 @@
+(defun my-toggle-menu-and-scrollbar ()
+  "Toggles both menu-bar-mode and scroll-bar-mode"
+  (interactive)
+  (if tool-bar-mode
+      (progn
+        (tool-bar-mode -1)
+        ;; (scroll-bar-mode -1)
+        )
+    (progn
+      (tool-bar-mode 1)
+      ;; (scroll-bar-mode 1)
+      )))
+
 (defun dos2unix ()
   "Convert EOL to unix format"
   (interactive)

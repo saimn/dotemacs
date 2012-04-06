@@ -92,8 +92,9 @@
 ;; Keyboard shortcuts
 ;;----------------------------------------------------------------------
 ;; use cua-mode only for rectangles
-(setq cua-enable-cua-keys nil)
-(cua-mode t)
+;; (setq cua-enable-cua-keys nil)
+;; (cua-mode t)
+(cua-selection-mode t)
 
 ;; Mouse
 ;; (global-set-key [mouse-3] 'imenu)
@@ -154,8 +155,8 @@
 (global-set-key [\C-f1] 'compile)
 (global-set-key [\C-f3] 'next-error)
 (global-set-key [\C-f4] 'previous-error)
+(global-set-key [\C-f8] 'kill-compilation)
 (global-set-key [\C-f9] 'recompile)
-(global-set-key [\C-f10] 'kill-compilation)
 
 ;;----------------------------------------------------------------------
 ;; Buffers
@@ -286,6 +287,71 @@
         ropemacs-autoimport-modules '("os" "os.path" "sys")
         ropemacs-global-prefix "C-c p"
         ropemacs-enable-shortcuts nil))
+
+;;----------------------------------------------------------------------
+;; CEDET / ECB
+;;----------------------------------------------------------------------
+;; CEDET
+;(load-file "~/.emacs.d/cedet-1.0pre6/common/cedet.el")
+;(global-ede-mode 1)                      ; Enable the Project management system
+;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;(global-srecode-minor-mode 1)            ; Enable template insertion menu
+
+;; ECB
+;(add-to-list 'load-path "~/.emacs.d/ecb-2.40")
+;(require 'ecb)
+;(require 'semantic-ia)
+
+;(require 'ecb-autoloads)
+
+;;----------------------------------------------------------------------
+;; Evil
+;;----------------------------------------------------------------------
+;; (setq evil-default-cursor t
+;;       evil-find-skip-newlines t  ; f, F, t, T skip over newlines to find a character
+;;       evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
+;;       )
+
+;; (setq evil-leader/leader ","
+;;       evil-leader/in-all-states t)
+
+;; (require 'evil-leader)
+;; (require 'evil)
+;; (evil-mode 1)
+
+;; (dolist (mode '(inferior-emacs-lisp-mode
+;;                 pylookup-mode
+;;                 idlwave-mode
+;;                 idlwave-shell-mode
+;;                 idlwave-shell-electric-debug-mode))
+;;   (push mode evil-emacs-state-modes))
+
+;; (define-key evil-normal-state-map (kbd "C-:") 'eval-expression)
+;; (define-key evil-normal-state-map (kbd "SPC") 'hs-toggle-hiding)
+;; (define-key evil-normal-state-map (kbd "C-b") 'ido-switch-buffer)
+
+;; (define-key evil-motion-state-map "\C-e" 'end-of-line)
+;; (define-key evil-motion-state-map "\C-y" nil)
+
+;; (define-key evil-insert-state-map "\C-e" 'end-of-line)
+;; (define-key evil-insert-state-map "\C-y" 'yank)
+
+;; (evil-leader/set-key
+;;   "b" 'ido-switch-buffer
+;;   "B" 'ibuffer-list-buffers
+;;   "w" 'save-buffer
+;;   "W" 'save-some-buffers
+;;   "k" 'kill-buffer-and-window
+;;   "K" 'kill-this-buffer
+;;   "d" 'dired-jump
+;;   "m" 'compile
+
+;;   "n" 'split-window-horizontally
+;;   "c" 'delete-window
+;;   "N" 'make-frame-command
+;;   "C" 'delete-frame
+
+;;   "g" 'magit-status)
 
 ;;----------------------------------------------------------------------------
 ;; Private configuration
