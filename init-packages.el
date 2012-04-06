@@ -15,6 +15,7 @@
                       auto-complete
                       browse-kill-ring
                       deft
+                      ;; evil evil-leader
                       flymake-cursor
                       less-css-mode
                       lua-mode
@@ -26,6 +27,7 @@
                       popwin
                       rainbow-mode
                       smart-tab
+                      undo-tree
                       yasnippet
                       zenburn-theme
                       )
