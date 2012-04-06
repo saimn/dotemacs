@@ -1,7 +1,8 @@
 ;;----------------------------------------------------------------------
 ;; Edit
 ;;----------------------------------------------------------------------
-(setq shift-select-mode 't
+(setq shift-select-mode t
+      mouse-yank-at-point nil
       kill-whole-line t         ; kill-line including the line ending char
       next-line-add-newlines t  ; C-n add new line
       comment-auto-fill-only-comments t
