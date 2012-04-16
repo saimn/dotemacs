@@ -9,8 +9,9 @@
 
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit
-                      starter-kit-bindings starter-kit-eshell
-                      starter-kit-lisp starter-kit-js
+                      starter-kit-eshell
+                      starter-kit-lisp
+                      starter-kit-js
                       autopair
                       auto-complete
                       browse-kill-ring

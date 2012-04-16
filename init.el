@@ -91,6 +91,8 @@
 ;;----------------------------------------------------------------------
 ;; Keyboard shortcuts
 ;;----------------------------------------------------------------------
+(windmove-default-keybindings 'meta)
+
 ;; use cua-mode only for rectangles
 ;; (setq cua-enable-cua-keys nil)
 ;; (cua-mode t)
@@ -99,11 +101,26 @@
 ;; Mouse
 ;; (global-set-key [mouse-3] 'imenu)
 
-;; (global-set-key (kbd "C-z") 'undo)
+;; Font size
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
+
+;; Use regex searches by default.
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
+  ;; Jump to a definition in the current file. (Protip: this is awesome.)
+  (global-set-key (kbd "C-x C-i") 'imenu)
+
+
+(global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-b") 'ido-switch-buffer)
 (global-set-key (kbd "<C-escape>") 'ibuffer-list-buffers)
 (global-set-key (kbd "C-/") 'comment-dwim)
-(global-set-key "\M-;" 'comment-dwim)
+(global-set-key (kbd "\M-;") 'comment-dwim)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "<C-tab>") 'other-window)
 ;; (global-set-key (kbd "<C-S-tab>") '(lambda () (interactive) (other-window -1)))
@@ -111,6 +128,7 @@
 
 (global-set-key (kbd "M-r") 'replace-string)
 (global-set-key (kbd "M-g") 'goto-line)
+;; Completion that uses many different methods to find options.
 
 ;; supprime le formatage du paragraphe courant
 (global-set-key (kbd "M-Q") 'remove-hard-wrap-paragraph)
@@ -118,19 +136,21 @@
 (global-set-key [kp-enter] 'newline-and-indent)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; (global-set-key [delete] 'delete-backward-char)
-
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c r") 'org-remember)
 
 (global-set-key (kbd "C-c c") 'server-edit)
 (global-set-key (kbd "C-c f") 'flyspell-buffer)
+;;(global-set-key (kbd "C-c f") 'find-file-in-project)
+(global-set-key (kbd "C-c g") 'magit-status)
 ;; (global-set-key (kbd "C-c h") 'htmlfontify-buffer)
 (global-set-key (kbd "C-c k") 'kill-this-buffer)
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-c n") 'clean-up-buffer-or-region)
+;;(global-set-key (kbd "C-c n") 'esk-cleanup-buffer)
 (global-set-key (kbd "C-c q") 'refill-mode)
+(global-set-key (kbd "C-c r") 'revert-buffer)
 ;;(global-set-key (kbd "C-c s") 'sr-speedbar-toggle)
 (global-set-key (kbd "C-c t") 'trim-whitespace)
 (global-set-key (kbd "C-c v") 'refill-mode)
@@ -138,6 +158,8 @@
 (global-set-key (kbd "C-c y") '(lambda ()
                                  (interactive)
                                  (popup-menu 'yank-menu)))
+(global-set-key (kbd "C-c y") 'bury-buffer)
+
 
 ;; fonction keys
 (global-set-key [f1]  (lambda () (interactive) (manual-entry (current-word))))
@@ -157,6 +179,7 @@
 (global-set-key [\C-f4] 'previous-error)
 (global-set-key [\C-f8] 'kill-compilation)
 (global-set-key [\C-f9] 'recompile)
+(global-set-key [\C-f10] 'menu-bar-mode)
 
 ;;----------------------------------------------------------------------
 ;; Buffers
