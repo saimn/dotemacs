@@ -23,7 +23,6 @@
                       magit
                       magithub
                       markdown-mode
-                      monokai-theme
                       php-mode
                       popwin
                       rainbow-mode

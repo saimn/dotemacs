@@ -1,3 +1,6 @@
 [submodule "vendor/color-theme-tangotango"]
 	path = vendor/color-theme-tangotango
 	url = git@github.com:saimn/color-theme-tangotango.git
+[submodule "vendor/color-theme-molokai"]
+	path = vendor/color-theme-molokai
+	url = git@github.com:saimn/color-theme-molokai.git

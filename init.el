@@ -49,10 +49,12 @@
 
 (require 'init-packages)
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/color-theme-molokai")
+
 (setq color-theme-is-global t)
 ;; (setq frame-background-mode 'dark)
-;; (load-theme 'zenburn t)
-(load-theme 'monokai t)
+(load-theme 'zenburn t)
+;;(load-theme 'monokai t)
 
 (require 'init-completion)
 (require 'init-edit)
