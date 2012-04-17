@@ -36,7 +36,7 @@
 (add-hook 'find-file-hooks
   (lambda ()
     (font-lock-add-keywords nil
-      '(("\\<\\(FIXME\\|TODO\\|WARNING\\|BUG\\|XXX+\\|NB\\|NOTE\\|ATTENTION\\)[  ]*:"
+      '(("\\<\\(FIXME\\|TODO\\|WARNING\\|BUG\\|XXX+\\|NB\\|NOTE\\)[  ]*:"
          1 font-lock-warning-face prepend))
     )
   )
