@@ -4,3 +4,6 @@
 [submodule "vendor/color-theme-molokai"]
 	path = vendor/color-theme-molokai
 	url = git@github.com:saimn/color-theme-molokai.git
+[submodule "vendor/idlwave"]
+	path = vendor/idlwave
+	url = https://github.com/jdtsmith/idlwave.git
