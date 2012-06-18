@@ -314,22 +314,6 @@
         ropemacs-enable-shortcuts nil))
 
 ;;----------------------------------------------------------------------
-;; CEDET / ECB
-;;----------------------------------------------------------------------
-;; CEDET
-;(load-file "~/.emacs.d/cedet-1.0pre6/common/cedet.el")
-;(global-ede-mode 1)                      ; Enable the Project management system
-;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;(global-srecode-minor-mode 1)            ; Enable template insertion menu
-
-;; ECB
-;(add-to-list 'load-path "~/.emacs.d/ecb-2.40")
-;(require 'ecb)
-;(require 'semantic-ia)
-
-;(require 'ecb-autoloads)
-
-;;----------------------------------------------------------------------
 ;; Evil
 ;;----------------------------------------------------------------------
 ;; (setq evil-default-cursor t
