@@ -89,9 +89,10 @@
 ;;----------------------------------------------------------------------
 
 (require 'yasnippet)
-(yas/initialize)
-;;(yas/load-directory "~/.emacs.d/site-lisp/yasnippet/snippets")
+;; (setq yas/snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/elpa/yasnippet-0.6.1/snippets"))
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
 (yas/load-directory "~/.emacs.d/snippets")
+(yas/global-mode 1)
 
 ;; ;; (require 'autoinsert)
 ;; ;; (auto-insert-mode)                                   ; Adds hook to find-files-hook
