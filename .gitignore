@@ -5,12 +5,13 @@
 abbrev_defs
 ac-comphist.dat
 anything-*
-auto-save-list/
-backups/
 customize.el
-elpa/
-eshell/
 init-priv.el
 places
 tramp
+auto-save-list/
+backups/
+elpa/
+eshell/
+tmp/
 url/
