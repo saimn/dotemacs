@@ -35,6 +35,9 @@
       temporary-file-directory "~/.emacs.d/tmp/"
       backup-directory-alist '(("." . "~/.emacs.d/tmp/")))
 
+;; store autosaved files in the system's tmp dir
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
 ;; Customize file
 (setq custom-file (expand-file-name "~/.emacs.d/customize.el"))
 (load custom-file)
