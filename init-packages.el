@@ -11,7 +11,6 @@
 (defvar my-packages '(starter-kit
                       starter-kit-eshell
                       starter-kit-lisp
-                      starter-kit-js
                       autopair
                       auto-complete
                       browse-kill-ring

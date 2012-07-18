@@ -16,9 +16,6 @@
 ;;------------------------------------------------------------
 ;; HTML
 ;;------------------------------------------------------------
-;; Utiliser le menu expert
-;; (setq html-helper-use-expert-menu t)
-
 ;; Indenter automatiquement lorsque l'on appuie sur entrée
 (defun my-html-helper-load-hook ()
   (define-key html-mode-map (kbd "RET") 'newline-and-indent))
@@ -41,6 +38,21 @@
   (while (< (point) (+ 70 (point-at-bol)))
     (insert "-"))
   (insert (concat "*/\n" "\n")))
+
+;;------------------------------------------------------------
+;; Js
+;;------------------------------------------------------------
+(defun my-js-mode-hook ()
+  (setq js-indent-level 2)
+  ;; fixes problem with pretty function font-lock
+  (define-key js-mode-map (kbd ",") 'self-insert-command)
+  (font-lock-add-keywords
+   'js-mode `(("\\(function *\\)("
+               (0 (progn (compose-region (match-beginning 1)
+                                         (match-end 1) "\u0192")
+                         nil))))))
+
+(add-hook 'js-mode-hook 'my-js-mode-hook)
 
 ;;------------------------------------------------------------
 ;; Utiliser PSGML pour les fichiers SGML, HTML, XML
@@ -70,16 +82,17 @@
 ;;  rng-nxml-auto-validate-flag nil
 ;;  nxml-degraded t)
 
-;; (setq auto-mode-alist
-;;       (append '(("\\.x[ms]l\\'" . nxml-mode)
-;;                 ("\\.[sx]?html?\\'" . html-mumamo)
-;;                 ("\\.tpl\\'" . smarty-html-mumamo)
-;;                 ("\\.php\\'" . html-mumamo)
-;;                 ("\\.inc\\'" . html-mumamo)
-;;                 ("\\.sql\\'" . sql-mode)
-;;                 ("\\.css\\'" . css-mode)
-;;                 ("\\.js\\'" . javascript-mode))
-;;               auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("\\.x[ms]l\\'" . nxml-mode)
+                ;; ("\\.[sx]?html?\\'" . html-mumamo)
+                ;; ("\\.tpl\\'" . smarty-html-mumamo)
+                ;; ("\\.php\\'" . html-mumamo)
+                ;; ("\\.inc\\'" . html-mumamo)
+                ("\\.sql\\'" . sql-mode)
+                ("\\.css\\'" . css-mode)
+                ("\\.js\\'" . javascript-mode)
+                ("\\.json\\'" . javascript-mode))
+              auto-mode-alist))
 
 
 ;; (require 'zencoding-mode)
@@ -87,25 +100,5 @@
 ;; (define-key html-mumamo-mode-map (kbd "C-j") 'zencoding-expand-line)
 ;; (define-key smarty-html-mumamo-mode-map (kbd "C-j") 'zencoding-expand-line)
 
-;;------------------------------------------------------------
-;; Commands
-;;------------------------------------------------------------
-(defun tidy-html ()
-  "Tidies the HTML content in the buffer using `tidy'"
-  (interactive)
-  (shell-command-on-region
-   ;; beginning and end of buffer
-   (point-min)
-   (point-max)
-   ;; command and parameters
-   "tidy -i -w 120 -q"
-   ;; output buffer
-   (current-buffer)
-   ;; replace?
-   t
-   ;; name of the error buffer
-   "*Tidy Error Buffer*"
-   ;; show error buffer?
-   t))
 
 (provide 'init-web)
