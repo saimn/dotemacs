@@ -17,6 +17,7 @@
                       browse-kill-ring
                       deft
                       ;; evil evil-leader
+                      flymake
                       flymake-cursor
                       less-css-mode
                       lua-mode

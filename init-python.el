@@ -31,6 +31,9 @@
   ;; (setq flymake-python-pyflakes-executable "pyflakes")
   (load-library "flymake-cursor.el")
 
+  ;; I want to see at most the first 4 errors for a line.
+  (setq flymake-number-of-errors-to-display 4)
+
   (defun flymake-pyflakes-init ()
     "Initialize flymake for python checking"
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
