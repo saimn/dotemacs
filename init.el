@@ -82,6 +82,7 @@
 (setq auto-mode-alist
   (append
     '(("\\.[kz]?sh\\'" . sh-mode)
+      ("zsh" . sh-mode)
       ("bash" . sh-mode)
       ("profile" . sh-mode)
       ("[Mm]akefile\\'" . makefile-mode)

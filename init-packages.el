@@ -20,11 +20,13 @@
                       ;; evil evil-leader
                       flymake
                       flymake-cursor
+                      jinja2-mode
                       less-css-mode
                       lua-mode
                       magit
                       magithub
                       markdown-mode
+                      mmm-mode
                       php-mode
                       popwin
                       rainbow-mode

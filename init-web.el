@@ -55,6 +55,13 @@
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
 ;;------------------------------------------------------------
+
+(require 'mmm-auto)
+(setq mmm-global-mode 'maybe)
+(mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php)
+(mmm-add-mode-ext-class 'css-mode "\\.html\\'" 'css-mode-html)
+(mmm-add-mode-ext-class 'js2-mode "\\.html\\'" 'js2-mode-html)
+
 ;; Utiliser PSGML pour les fichiers SGML, HTML, XML
 ;; (autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)
 ;; (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
