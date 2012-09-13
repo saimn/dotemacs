@@ -89,8 +89,6 @@
       ("\\.mk\\'" . makefile-mode)
       ("\\.conf\\'" . conf-mode)
       ("\\rc\\'" . conf-mode)
-      ("/mutt" . mail-mode)
-      ("\\PKGBUILD\\'" . pkgbuild-mode)
      )
      auto-mode-alist))
 
@@ -290,15 +288,15 @@
 ;; (add-hook 'mail-citation-hook 'sc-cite-original)
 
 ;; (autoload 'sc-cite-original "supercite" nil t)
-(autoload 'muttrc-mode "muttrc-mode.el"
-  "Major mode to edit muttrc files" t)
-(setq auto-mode-alist
-      (append '(("muttrc\\'" . muttrc-mode))
-              auto-mode-alist))
+(autoload 'muttrc-mode "muttrc-mode.el" "Major mode to edit muttrc files" t)
+(setq auto-mode-alist (append '(("muttrc\\'" . muttrc-mode)
+                                ("/mutt" . mail-mode)) auto-mode-alist))
 
 ;; pkgbuild
-(autoload 'pkgbuild-mode "pkgbuild-mode" nil t)
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
+                              
 ;;----------------------------------------------------------------------
 ;; Pymacs and Rope for Python
 ;;----------------------------------------------------------------------

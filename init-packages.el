@@ -28,6 +28,7 @@
                       markdown-mode
                       mmm-mode
                       php-mode
+                      pkgbuild-mode
                       popwin
                       rainbow-mode
                       smart-tab
