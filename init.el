@@ -256,6 +256,10 @@
 ;; Tramp (remote files editing)
 (setq tramp-default-method "ssh")
 
+;; powerline
+(require 'powerline)
+(powerline-default-center)
+
 ;; distinguish files with the same name
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)

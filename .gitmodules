@@ -7,3 +7,6 @@
 [submodule "vendor/idlwave"]
 	path = vendor/idlwave
 	url = https://github.com/jdtsmith/idlwave.git
+[submodule "vendor/powerline"]
+	path = vendor/powerline
+	url = https://github.com/milkypostman/powerline.git
