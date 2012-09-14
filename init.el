@@ -296,7 +296,7 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
-                              
+
 ;;----------------------------------------------------------------------
 ;; Pymacs and Rope for Python
 ;;----------------------------------------------------------------------
@@ -329,51 +329,51 @@
 ;;----------------------------------------------------------------------
 ;; Evil
 ;;----------------------------------------------------------------------
-;; (setq evil-default-cursor t
-;;       evil-find-skip-newlines t  ; f, F, t, T skip over newlines to find a character
-;;       evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
-;;       )
+(setq evil-default-cursor t
+      evil-find-skip-newlines t  ; f, F, t, T skip over newlines to find a character
+      evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
+      )
 
-;; (setq evil-leader/leader ","
-;;       evil-leader/in-all-states t)
+(setq evil-leader/leader ","
+      evil-leader/in-all-states t)
 
-;; (require 'evil-leader)
-;; (require 'evil)
-;; (evil-mode 1)
+(require 'evil-leader)
+(require 'evil)
+(evil-mode 1)
 
-;; (dolist (mode '(inferior-emacs-lisp-mode
-;;                 pylookup-mode
-;;                 idlwave-mode
-;;                 idlwave-shell-mode
-;;                 idlwave-shell-electric-debug-mode))
-;;   (push mode evil-emacs-state-modes))
+(dolist (mode '(inferior-emacs-lisp-mode
+                pylookup-mode
+                idlwave-mode
+                idlwave-shell-mode
+                idlwave-shell-electric-debug-mode))
+  (push mode evil-emacs-state-modes))
 
-;; (define-key evil-normal-state-map (kbd "C-:") 'eval-expression)
-;; (define-key evil-normal-state-map (kbd "SPC") 'hs-toggle-hiding)
-;; (define-key evil-normal-state-map (kbd "C-b") 'ido-switch-buffer)
+(define-key evil-normal-state-map (kbd "C-:") 'eval-expression)
+(define-key evil-normal-state-map (kbd "SPC") 'hs-toggle-hiding)
+(define-key evil-normal-state-map (kbd "C-b") 'ido-switch-buffer)
 
-;; (define-key evil-motion-state-map "\C-e" 'end-of-line)
-;; (define-key evil-motion-state-map "\C-y" nil)
+(define-key evil-motion-state-map "\C-e" 'end-of-line)
+(define-key evil-motion-state-map "\C-y" nil)
 
-;; (define-key evil-insert-state-map "\C-e" 'end-of-line)
-;; (define-key evil-insert-state-map "\C-y" 'yank)
+(define-key evil-insert-state-map "\C-e" 'end-of-line)
+(define-key evil-insert-state-map "\C-y" 'yank)
 
-;; (evil-leader/set-key
-;;   "b" 'ido-switch-buffer
-;;   "B" 'ibuffer-list-buffers
-;;   "w" 'save-buffer
-;;   "W" 'save-some-buffers
-;;   "k" 'kill-buffer-and-window
-;;   "K" 'kill-this-buffer
-;;   "d" 'dired-jump
-;;   "m" 'compile
+(evil-leader/set-key
+  "b" 'ido-switch-buffer
+  "B" 'ibuffer-list-buffers
+  "w" 'save-buffer
+  "W" 'save-some-buffers
+  "k" 'kill-buffer-and-window
+  "K" 'kill-this-buffer
+  "d" 'dired-jump
+  "m" 'compile
 
-;;   "n" 'split-window-horizontally
-;;   "c" 'delete-window
-;;   "N" 'make-frame-command
-;;   "C" 'delete-frame
+  "n" 'split-window-horizontally
+  "c" 'delete-window
+  "N" 'make-frame-command
+  "C" 'delete-frame
 
-;;   "g" 'magit-status)
+  "g" 'magit-status)
 
 ;;----------------------------------------------------------------------------
 ;; Private configuration

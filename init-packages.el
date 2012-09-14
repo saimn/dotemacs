@@ -17,7 +17,8 @@
                       auto-complete
                       browse-kill-ring
                       deft
-                      ;; evil evil-leader
+                      evil
+                      evil-leader
                       flymake
                       flymake-cursor
                       jinja2-mode
