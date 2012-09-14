@@ -33,6 +33,7 @@
                       rainbow-mode
                       smart-tab
                       undo-tree
+                      virtualenv
                       yasnippet
                       zenburn-theme
                       )
