@@ -73,6 +73,7 @@
 (add-to-list 'ac-modes 'text-mode)
 (add-to-list 'ac-modes 'idlwave-mode)
 (add-to-list 'ac-modes 'less-css-mode)
+(add-to-list 'ac-modes 'scss-mode)
 (global-auto-complete-mode t)
 
 ;; C-n/C-p to select candidates

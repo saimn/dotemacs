@@ -33,6 +33,7 @@
                       popwin
                       rainbow-mode
                       smart-tab
+                      scss-mode
                       undo-tree
                       virtualenv
                       yasnippet

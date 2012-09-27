@@ -56,7 +56,7 @@
 (require 'org-mouse)                 ; Extended mouse functionality
 
 (setq org-directory "~/org/"
-      org-mobile-directory "/scpc:climbr@ssh.cluster003.ovh.net:mobileorg/"
+      org-mobile-directory "/scpc:kimsufi:mobileorg/"
       org-mobile-inbox-for-pull "~/org/mobileorg.org"
       org-archive-location "~/org/archives.org::")
 

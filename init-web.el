@@ -27,9 +27,11 @@
 (defun my-css-mode-hook ()
   (setq css-indent-offset 2)
   (define-key css-mode-map "\C-c s" 'css-insert-section)
+  (autopair-mode -1)
   (rainbow-mode 1))
 
 (add-hook 'css-mode-hook 'my-css-mode-hook)
+(add-hook 'scss-mode-hook 'my-css-mode-hook)
 
 (defun css-insert-section (section)
   "Inserts a css section."
@@ -97,6 +99,7 @@
                 ;; ("\\.inc\\'" . html-mumamo)
                 ("\\.sql\\'" . sql-mode)
                 ("\\.css\\'" . css-mode)
+                ("\\.scss\\'" . scss-mode)
                 ("\\.js\\'" . javascript-mode)
                 ("\\.json\\'" . javascript-mode))
               auto-mode-alist))
