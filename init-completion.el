@@ -3,8 +3,6 @@
 ;;----------------------------------------------------------------------
 
 ;(setq tab-always-indent 'complete)
-; Completion of acronyms and initialisms
-;(setq completion-styles (append completion-style '(initials)))
 
 ;; minibuffer completion
 ;;(icomplete-mode) ; complete as you type
@@ -23,52 +21,18 @@
  )
 ;(setq ido-file-extensions-order '(".org" ".txt" ".py" ".el" ".ini" ".cfg"))
 
-;;----------------------------------------------------------------------
-;; Anything
-;; see http://emacs-fu.blogspot.com/2011/09/finding-just-about-anything.html
-;; (require 'anything-config)
-;; (defun my-anything ()
-;;   (interactive)
-;;   (anything-other-buffer
-;;    '(anything-c-source-emacs-commands
-;;      anything-c-source-buffers
-;;      anything-c-source-files-in-current-dir
-;;      anything-c-source-file-name-history
-;;      ;; anything-c-source-info-pages
-;;      ;; anything-c-source-man-pages
-;;      ;; anything-c-source-file-cache
-;;      anything-c-source-locate)
-;;    " *my-anything*"))
-;; (global-set-key (kbd "M-X") 'my-anything)
+(require 'yasnippet)
+(yas-load-directory "~/.emacs.d/snippets")
+(yas-global-mode 1)
 
-;; (global-set-key (kbd "C-x b")
-;;   (lambda() (interactive)
-;;     (anything
-;;      :prompt "Switch to: "
-;;      :candidate-number-limit 10                 ;; up to 10 of each
-;;      :sources
-;;      '( anything-c-source-buffers               ;; buffers
-;;         anything-c-source-recentf               ;; recent files
-;;         anything-c-source-bookmarks             ;; bookmarks
-;;         anything-c-source-files-in-current-dir+ ;; current dir
-;;         anything-c-source-locate))))            ;; use 'locate'
-
-;; (global-set-key (kbd "C-c I")  ;; i -> info
-;;   (lambda () (interactive)
-;;     (anything
-;;       :prompt "Info about: "
-;;       :candidate-number-limit 3
-;;       :sources
-;;       '( anything-c-source-info-libc             ;; glibc docs
-;;          anything-c-source-man-pages             ;; man pages
-;;          anything-c-source-info-emacs))))        ;; emacs
-
-;;----------------------------------------------------------------------
-
-(require 'smart-tab)
+;; enable autopair in all buffers
+(require 'autopair)
+(autopair-global-mode)
+(setq autopair-autowrap t)
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20120922.1815/dict")
+(setq ac-dwim t)
 (ac-config-default)
 (add-to-list 'ac-modes 'text-mode)
 (add-to-list 'ac-modes 'idlwave-mode)
@@ -76,22 +40,44 @@
 (add-to-list 'ac-modes 'scss-mode)
 (global-auto-complete-mode t)
 
-;; C-n/C-p to select candidates
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;; custom keybindings to use tab, enter and up and down arrows
+;; (define-key ac-complete-mode-map "\t" 'ac-expand)
+;; (define-key ac-complete-mode-map "\r" 'ac-complete)
+(define-key ac-complete-mode-map "\M-n" 'ac-next)
+(define-key ac-complete-mode-map "\M-p" 'ac-previous)
 
-;; enable autopair in all buffers
-(require 'autopair)
-(autopair-global-mode)
-(setq autopair-autowrap t)
+;; ropemacs Integration with auto-completion
+(defun ac-ropemacs-candidates ()
+  (mapcar (lambda (completion)
+      (concat ac-prefix completion))
+    (rope-completions)))
+
+(ac-define-source nropemacs
+  '((candidates . ac-ropemacs-candidates)
+    (symbol . "p")))
+
+(ac-define-source nropemacs-dot
+  '((candidates . ac-ropemacs-candidates)
+    (symbol . "p")
+    (prefix . c-dot)
+    (requires . 0)))
+
+(defun ac-nropemacs-setup ()
+  (setq ac-sources (append '(ac-source-nropemacs
+                             ac-source-nropemacs-dot) ac-sources)))
+(defun ac-python-mode-setup ()
+  (add-to-list 'ac-sources 'ac-source-yasnippet))
+
+(add-hook 'python-mode-hook 'ac-python-mode-setup)
+(add-hook 'rope-open-project-hook 'ac-nropemacs-setup)
+
+(require 'smart-tab)
+(setq smart-tab-using-hippie-expand t)
+(setq global-smart-tab-mode t)
 
 ;;----------------------------------------------------------------------
 ;; Templates
 ;;----------------------------------------------------------------------
-
-(require 'yasnippet)
-(yas/load-directory "~/.emacs.d/snippets")
-(yas/global-mode 1)
 
 ;; ;; (require 'autoinsert)
 ;; ;; (auto-insert-mode)                                   ; Adds hook to find-files-hook
@@ -144,5 +130,47 @@
 ;;         ))
 ;;     )
 ;;   )
+
+;;----------------------------------------------------------------------
+;; Anything
+;; see http://emacs-fu.blogspot.com/2011/09/finding-just-about-anything.html
+;; (require 'anything-config)
+;; (defun my-anything ()
+;;   (interactive)
+;;   (anything-other-buffer
+;;    '(anything-c-source-emacs-commands
+;;      anything-c-source-buffers
+;;      anything-c-source-files-in-current-dir
+;;      anything-c-source-file-name-history
+;;      ;; anything-c-source-info-pages
+;;      ;; anything-c-source-man-pages
+;;      ;; anything-c-source-file-cache
+;;      anything-c-source-locate)
+;;    " *my-anything*"))
+;; (global-set-key (kbd "M-X") 'my-anything)
+
+;; (global-set-key (kbd "C-x b")
+;;   (lambda() (interactive)
+;;     (anything
+;;      :prompt "Switch to: "
+;;      :candidate-number-limit 10                 ;; up to 10 of each
+;;      :sources
+;;      '( anything-c-source-buffers               ;; buffers
+;;         anything-c-source-recentf               ;; recent files
+;;         anything-c-source-bookmarks             ;; bookmarks
+;;         anything-c-source-files-in-current-dir+ ;; current dir
+;;         anything-c-source-locate))))            ;; use 'locate'
+
+;; (global-set-key (kbd "C-c I")  ;; i -> info
+;;   (lambda () (interactive)
+;;     (anything
+;;       :prompt "Info about: "
+;;       :candidate-number-limit 3
+;;       :sources
+;;       '( anything-c-source-info-libc             ;; glibc docs
+;;          anything-c-source-man-pages             ;; man pages
+;;          anything-c-source-info-emacs))))        ;; emacs
+
+
 
 (provide 'init-completion)
