@@ -25,15 +25,15 @@
                       less-css-mode
                       lua-mode
                       magit
-                      magithub
                       markdown-mode
                       mmm-mode
                       php-mode
+                      python
                       pkgbuild-mode
                       popwin
                       rainbow-mode
-                      smart-tab
                       scss-mode
+                      smart-tab
                       undo-tree
                       virtualenv
                       yasnippet

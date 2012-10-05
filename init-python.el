@@ -10,19 +10,17 @@
 ;;----------------------------------------------------------------------
 ;; IPython
 ;;----------------------------------------------------------------------
-;; load ipython.el if ipython is available
-;; (when (executable-find "ipython2")
-;;   (require 'ipython nil 'noerror))
-;; (when (featurep 'ipython)
-;;   (setq python-python-command "ipython2") ; -cl for classic prompt
-;;   (setq python-command python-python-command)
-;;   ;; (setq ipython-command "ipython")
-;;   (setq py-python-command-args '( "-colors" "Linux"))
-;;   (setq ipython-completion-command-string
-;;         "print(';'.join(__IP.Completer.all_completions('%s')))\n")
-;;   (autoload 'py-shell "ipython"
-;;     "Use IPython as the Python interpreter." t)
-;;   )
+(setq
+ python-shell-interpreter "ipython2"
+ python-shell-interpreter-args ""
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 ;;----------------------------------------------------------------------------
 ;; On-the-fly syntax checking via flymake
