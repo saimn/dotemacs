@@ -73,9 +73,10 @@
 ;;------------------------------------------------------------
 
 (require 'deft)
-(setq deft-extension "txt")
-(setq deft-directory "~/org/notes")
-(setq deft-text-mode 'markdown-mode)
+(setq deft-extension "txt"
+      deft-directory "~/org/notes"
+      deft-text-mode 'markdown-mode
+      deft-auto-save-interval 10.0)
 
 (autoload 'c2c-mode "c2c-mode"
   "Major mode for editing with Camptocamp.org" t)
