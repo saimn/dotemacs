@@ -26,7 +26,6 @@
                       lua-mode
                       magit
                       markdown-mode
-                      mmm-mode
                       php-mode
                       python
                       pkgbuild-mode
@@ -36,6 +35,7 @@
                       smart-tab
                       undo-tree
                       virtualenv
+                      web-mode
                       yasnippet
                       zenburn-theme
                       )

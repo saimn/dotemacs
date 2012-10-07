@@ -75,13 +75,10 @@
 ;; HTML
 ;;------------------------------------------------------------
 
-(require 'mmm-auto)
-;; (setq mmm-global-mode 'maybe)
-(mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php)
-(mmm-add-mode-ext-class 'html-mode nil 'html-js)
-(mmm-add-mode-ext-class 'html-mode nil 'embedded-css)
-;; (mmm-add-mode-ext-class 'css-mode "\\.html\\'" 'css-mode-html)
-;; (mmm-add-mode-ext-class 'js2-mode "\\.html\\'" 'js2-mode-html)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 
 ;; Indenter automatiquement lorsque l'on appuie sur entrée
 ;; (defun my-html-helper-load-hook ()
@@ -92,8 +89,8 @@
       (append '(("\\.x[ms]l\\'" . nxml-mode)
                 ;; ("\\.[sx]?html?\\'" . html-mumamo)
                 ;; ("\\.tpl\\'" . smarty-html-mumamo)
-                ("\\.[sx]?html?\\'" . html-mode)
-                ("\\.tpl\\'" . html-mode)
+                ;; ("\\.[sx]?html?\\'" . html-mode)
+                ;; ("\\.tpl\\'" . html-mode)
                 ("\\.sql\\'" . sql-mode))
               auto-mode-alist))
 
