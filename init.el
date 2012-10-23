@@ -61,6 +61,7 @@
 
 (require 'init-completion)
 (require 'init-edit)
+(require 'init-ui)
 
 ;;(require 'init-c)         ; C
 (require 'init-functions)
