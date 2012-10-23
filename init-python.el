@@ -1,11 +1,11 @@
 (autoload 'python "python" "Python editing mode." t)
 
 ;; allow inferior Python processes to load modules from the current directory
-(setq python-remove-cwd-from-path 'nil)
+;; (setq python-remove-cwd-from-path 'nil)
 
 ;; Set PYTHONPATH
 ;; python-load-file not defined, may need to address this
-(setenv "PYTHONPATH" ".")
+;; (setenv "PYTHONPATH" ".")
 
 ;;----------------------------------------------------------------------
 ;; IPython
@@ -25,39 +25,41 @@
 ;;----------------------------------------------------------------------------
 ;; On-the-fly syntax checking via flymake
 ;;----------------------------------------------------------------------------
+(require 'flymake)
+(load-library "flymake-cursor")
+
+;; Script that flymake uses to check code. This script must be
+;; present in the system path: pylint, pyflakes, flake8
+(setq pycodechecker "flake8")
+
+(setq eldoc-echo-area-use-multiline-p t ; eldoc may always resize echo area
+      py-honour-comment-indentation t   ; comment indentation affects general indentation
+      py-pychecker-command "flake8"
+      ;; py-pychecker-command-args '("--output-format=parseable")
+      python-check-command "flake8")
+
 (when (load "flymake" t)
   ;; (setq flymake-python-pyflakes-executable "pyflakes")
-  (load-library "flymake-cursor.el")
 
   ;; I want to see at most the first 4 errors for a line.
   (setq flymake-number-of-errors-to-display 4)
 
-  (defun flymake-pyflakes-init ()
-    "Initialize flymake for python checking"
+  (defun flymake-pycodecheck-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list "pyflakes" (list local-file))))
+      (list pycodechecker (list local-file))))
 
-  (defun flymake-pylint-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "epylint" (list local-file))))
-
-  ;; use flymake for python for flymake-find-file-hook
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init))
+               '("\\.py\\'" flymake-pycodecheck-init))
 
   (add-hook 'python-mode-hook
             (lambda ()
-              (flymake-pyflakes-init)
+              (flymake-mode)
               ;; prevent flymake from running over temporary interpreter buffers
-              (unless (eq buffer-file-name nil) (flymake-mode 1))
+              ;; (unless (eq buffer-file-name nil) (flymake-mode 1))
               ;; flymake shortcuts
               (local-set-key [f10] 'flymake-goto-prev-error)
               (local-set-key [f11] 'flymake-goto-next-error)
@@ -66,17 +68,6 @@
               (local-set-key (kbd "M-n") 'flymake-goto-next-error))))
 
 ;;----------------------------------------------------------------------------
-
-(setq eldoc-echo-area-use-multiline-p t ; eldoc may always resize echo area
-      py-honour-comment-indentation t   ; comment indentation affects general indentation
-      py-pychecker-command "pylint"     ; source code checking with pylint
-      py-pychecker-command-args '("--output-format=parseable"))
-
-;; use pylint to check python files
-(setq python-check-command "pep8 --repeat")
-
-;;----------------------------------------------------------------------------
-
 (add-hook 'python-mode-hook
           (lambda ()
             ;; disable highlighting of unknown includes
@@ -84,7 +75,8 @@
 
             ;; (add-hook 'local-write-file-hooks 'untabify-buffer)
 
-            (eldoc-mode t)
+            (eldoc-mode 1)
+            (fci-mode 1)
             (auto-fill-mode 1)
             (setq tab-width 4)
             (setq mode-name "py")
