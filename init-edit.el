@@ -83,10 +83,9 @@
 
 ;; make whitespace-mode use just basic coloring
 (setq whitespace-style '(tabs trailing lines-tail newline))
-;; empty indentation space-before-tab space-after-tab spaces
 
 ;; Nombre de colonnes au delà duquel on considère qu'une ligne est trop longue
-(setq whitespace-line-column 78)
+(setq whitespace-line-column 80)
 
 ;; en Americain, les phrases (sentences) se terminent par deux espaces
 ;; ce comportement n'est pas souhaitable en francais

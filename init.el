@@ -55,7 +55,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/color-theme-molokai/")
 
 (setq color-theme-is-global t)
-;; (setq frame-background-mode 'dark)
+(setq frame-background-mode 'dark)
 ;; (load-theme 'zenburn t)
 (load-theme 'molokai t)
 
@@ -214,9 +214,7 @@
                ("Programming" (or
                                (mode . python-mode)
                                (mode . lua-mode)
-                               (mode . haskell-mode)
                                (name . "\\*Python.*\\*")
-                               (name . "\\*haskell.*\\*")
                                (mode . emacs-lisp-mode)
                                (mode . sh-mode)))
                ("Writing" (or
@@ -296,6 +294,9 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
+;; fill-column-indicator
+(turn-on-fci-mode)
+(setq fci-rule-width 5)
 
 ;;----------------------------------------------------------------------
 ;; Pymacs and Rope for Python

@@ -37,20 +37,13 @@
 ;; 'y' = yes, 'n' = no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; (require 'popwin)
-;; (setq display-buffer-function 'popwin:display-buffer)
-
 ;;------------------------------------------------------------
 ;; Speedbar
 ;;------------------------------------------------------------
 ;; (require 'sr-speedbar)
 ;; (setq sr-speedbar-right-side nil)
-;; (setq speedbar-show-unknown-files t)
-;; (setq speedbar-use-images t)
-;; ;; Additional extensions we are interested in
-;; (speedbar-add-supported-extension
-;;   '("PKGBUILD" ".txt" ".org" ".pdf" ".css" ".tpl" "inc" ".php" ".js"
-;;     ".conf" ".patch" ".diff" ".lua" ".sh"))
+(setq speedbar-show-unknown-files t)
+(setq speedbar-use-images t)
 
 ;; cedet
 ;; (global-ede-mode 1)

@@ -19,6 +19,7 @@
                       deft
                       evil
                       evil-leader
+                      fill-column-indicator
                       flymake
                       flymake-cursor
                       jinja2-mode
