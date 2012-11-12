@@ -20,6 +20,7 @@
                       evil
                       evil-leader
                       fill-column-indicator
+                      flycheck
                       flymake
                       flymake-cursor
                       jinja2-mode
