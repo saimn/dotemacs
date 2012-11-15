@@ -6,7 +6,7 @@
 
 ;; minibuffer completion
 ;;(icomplete-mode) ; complete as you type
-(setq completion-ignored-extensions '(".o" "~" ".bin" ".aux"))
+(setq completion-ignored-extensions '(".o" "~" ".bin" ".aux" ".pyc"))
 
 ;; InteractivelyDoThings
 ;;(require 'ido)
@@ -18,8 +18,9 @@
  ido-use-virtual-buffers t  ; refer to past buffers as well as existing ones
  ido-ignore-buffers         ; Ignore buffers:
    '("\\` " "^\*Back" "^\*Compile-Log" ".*Completion" "^\*Ido")
+ ido-file-extensions-order
+   '(".org" ".txt" ".py" ".el" ".ini" ".cfg")
  )
-;(setq ido-file-extensions-order '(".org" ".txt" ".py" ".el" ".ini" ".cfg"))
 
 (require 'yasnippet)
 (yas-load-directory "~/.emacs.d/snippets")
@@ -31,7 +32,7 @@
 (setq autopair-autowrap t)
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20120922.1815/dict")
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (setq ac-dwim t)
 (ac-config-default)
 (add-to-list 'ac-modes 'text-mode)
