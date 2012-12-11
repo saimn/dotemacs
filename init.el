@@ -302,7 +302,9 @@
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
 ;; fill-column-indicator
-(turn-on-fci-mode)
+;; (turn-on-fci-mode)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 (setq fci-rule-width 5)
 
 ;;----------------------------------------------------------------------
@@ -319,13 +321,11 @@
   (autoload 'pymacs-eval "pymacs" nil t)
   (autoload 'pymacs-exec "pymacs" nil t)
   (autoload 'pymacs-load "pymacs" nil t)
+  (autoload 'pymacs-autoload "pymacs")
 
-  ;; some python tools
-  (pymacs-load "python")
-  ;; python refactoring and support
-  (pymacs-load "ropemacs" "rope-")
-  ;; shortcut function to insert license headers
-  (pymacs-load "license")
+  (pymacs-load "python")            ; some python tools
+  (pymacs-load "ropemacs" "rope-")  ; python refactoring and support
+  (pymacs-load "license")           ; shortcut function to insert license headers
 
   ;; setup ropemacs
   (setq ropemacs-guess-project t
@@ -339,7 +339,7 @@
 ;;----------------------------------------------------------------------
 (setq evil-default-cursor t
       evil-find-skip-newlines t  ; f, F, t, T skip over newlines to find a character
-      evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
+      ;; evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
       )
 
 (setq evil-leader/leader ","

@@ -33,7 +33,6 @@
 ;; (setq pycodechecker "flake8")
 
 ;; (setq eldoc-echo-area-use-multiline-p t ; eldoc may always resize echo area
-;;       py-honour-comment-indentation t   ; comment indentation affects general indentation
 ;;       py-pychecker-command "flake8"
 ;;       ;; py-pychecker-command-args '("--output-format=parseable")
 ;;       python-check-command "flake8")
@@ -78,15 +77,13 @@
             (eldoc-mode 1)
             (fci-mode 1)
             (auto-fill-mode 1)
-            (setq tab-width 4)
-            (setq mode-name "py")
+            (setq tab-width 4
+                  mode-name "py"
+                  python-skeleton-autoinsert t)
 
             ;; Keybindings
+            (define-key python-mode-map "\C-m" 'newline-and-indent)
             (define-key python-mode-map "\C-ci" 'rope-auto-import)
-            (define-key python-mode-map "\M-?" 'rope-code-assist)
-            (define-key python-mode-map "\C-\M-?" 'rope-lucky-assist)
-            (define-key python-mode-map "\C-cg" 'rope-goto-definition)
-            (define-key python-mode-map "\C-cd" 'rope-show-doc)
             (define-key python-mode-map "\C-ct" 'rope-show-calltip)))
 
 (provide 'init-python)
