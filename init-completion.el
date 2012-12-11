@@ -35,11 +35,12 @@
 ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (setq ac-dwim t)
 (ac-config-default)
-(add-to-list 'ac-modes 'text-mode)
-(add-to-list 'ac-modes 'idlwave-mode)
-(add-to-list 'ac-modes 'less-css-mode)
-(add-to-list 'ac-modes 'scss-mode)
 (global-auto-complete-mode t)
+
+(dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode
+                html-mode nxml-mode sh-mode smarty-mode lisp-mode markdown-mode
+                js3-mode css-mode less-css-mode scss-mode idlwave-mode))
+  (add-to-list 'ac-modes mode))
 
 ;; custom keybindings to use tab, enter and up and down arrows
 ;; (define-key ac-complete-mode-map "\t" 'ac-expand)
