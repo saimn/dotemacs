@@ -37,6 +37,7 @@
                       flymake
                       flymake-cursor
                       jinja2-mode
+                      js2-mode
                       less-css-mode
                       lua-mode
                       magit

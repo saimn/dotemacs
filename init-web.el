@@ -54,22 +54,27 @@
 ;; JS
 ;;------------------------------------------------------------
 
-(autoload 'javascript-mode "javascript-mode.el" nil t)
+(autoload 'js2-mode "js2-mode" nil t)
 
-(defun my-js-mode-hook ()
-  (setq js-indent-level 2)
-  ;; fixes problem with pretty function font-lock
-  (define-key js-mode-map (kbd ",") 'self-insert-command)
-  (font-lock-add-keywords
-   'js-mode `(("\\(function *\\)("
-               (0 (progn (compose-region (match-beginning 1)
-                                         (match-end 1) "\u0192")
-                         nil))))))
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (setq mode-name "js2")
+             (setq js-indent-level 2)
+             ))
 
-(add-hook 'js-mode-hook 'my-js-mode-hook)
+(setq js2-use-font-lock-faces t
+      js2-mode-must-byte-compile nil
+      js2-basic-offset 2
+      js2-indent-on-enter-key t
+      js2-auto-indent-p t
+      js2-bounce-indent-p t)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
+
+;; On-the-fly syntax checking
+;; (eval-after-load 'js
+;;   '(add-hook 'js-mode-hook 'flymake-jslint-load))
 
 ;;------------------------------------------------------------
 ;; HTML
