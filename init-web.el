@@ -77,8 +77,20 @@
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+
+(defun web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+
+  (define-key web-mode-map (kbd "C-n") 'web-mode-match-tag)
+  )
+
+(add-hook 'web-mode-hook 'web-mode-hook)
 
 ;; Indenter automatiquement lorsque l'on appuie sur entrée
 ;; (defun my-html-helper-load-hook ()
