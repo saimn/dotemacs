@@ -1,8 +1,21 @@
-
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-             ;; '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+;; (defvar melpa-exclude-packages
+;;   '(slime)
+;;   "Don't install Melpa versions of these packages.")
+
+;; ;; Don't take Melpa versions of certain packages
+;; (setq package-filter-function
+;;       (lambda (package version archive)
+;;         (and
+;;          (not (memq package '(eieio)))
+;;          (or (not (string-equal archive "melpa"))
+;;              (not (memq package melpa-exclude-packages))))))
+
 (package-initialize)
 
 (when (not package-archive-contents)
