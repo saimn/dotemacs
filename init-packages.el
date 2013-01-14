@@ -36,6 +36,7 @@
                       flycheck
                       flymake
                       flymake-cursor
+                      jedi
                       jinja2-mode
                       js2-mode
                       less-css-mode
