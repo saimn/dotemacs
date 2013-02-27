@@ -287,10 +287,17 @@
   (set compose-mail-check-user-agent nil)
   (flyspell-mode)
   ;; (abbrev-mode 1)
-  (setq sc-nested-citation-p t)
-  (local-set-key "\C-Xk" 'server-edit))
+  ;; (local-set-key "\C-Xk" 'server-edit)
+  )
 (add-hook 'mail-mode-hook 'my-mail-mode-hook)
-;; (add-hook 'mail-citation-hook 'sc-cite-original)
+
+;; (add-hook 'mail-mode-hook
+;;           (lambda ()
+;;             (font-lock-add-keywords nil
+;;                '(("^[ \t]*>[ \t]*>[ \t]*>.*$"
+;;                   (0 'mail-multiply-quoted-text-face))
+;;                  ("^[ \t]*>[ \t]*>.*$"
+;;                   (0 'mail-double-quoted-text-face))))))
 
 ;; (autoload 'sc-cite-original "supercite" nil t)
 (autoload 'muttrc-mode "muttrc-mode.el" "Major mode to edit muttrc files" t)

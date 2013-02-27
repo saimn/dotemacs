@@ -36,6 +36,7 @@
                       flycheck
                       flymake
                       flymake-cursor
+                      git-commit-mode
                       jedi
                       jinja2-mode
                       js2-mode
@@ -53,6 +54,7 @@
                       smart-tab
                       undo-tree
                       virtualenv
+                      yaml-mode
                       yasnippet
                       zenburn-theme
                       )
