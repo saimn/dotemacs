@@ -391,8 +391,22 @@
   "g" 'magit-status)
 
 ;;----------------------------------------------------------------------------
-;; Private configuration
+;; Customize configuration
 ;;----------------------------------------------------------------------------
+(defun my-short-hostname()
+  (string-match "[0-9A-Za-z]+" system-name)
+  (substring system-name (match-beginning 0) (match-end 0)))
+
+;; Load different config file in text mode or gui mode.
+;; (if (null window-system)
+;;     (load-file "~/.emacs.d/texmode-emacs.el")
+;;   (load-file "~/.emacs.d/gui.el"))
+
+;; Load configuration for this host only, ie ~/.emacs.d/myhostname.el if exist
+(if (file-exists-p
+     (downcase (concat "~/.emacs.d/" (my-short-hostname) ".el")))
+    (load-file (downcase "~/.emacs.d/" (my-short-hostname) ".el")))
+
 (if (file-readable-p
      (expand-file-name "~/.emacs.d/init-priv.el"))
     (require 'init-priv))
