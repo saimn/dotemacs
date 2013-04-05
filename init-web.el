@@ -80,6 +80,13 @@
 ;; HTML
 ;;------------------------------------------------------------
 
+(setq auto-mode-alist
+      (append '(("\\.x[ms]l\\'" . nxml-mode)
+                ("\\.[psx]?html?\\'" . html-mode)
+                ("\\.tpl\\'" . html-mode)
+                ("\\.sql\\'" . sql-mode))
+              auto-mode-alist))
+
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags
@@ -93,15 +100,6 @@
 ;; (defun my-html-helper-load-hook ()
 ;;   (define-key html-mode-map (kbd "RET") 'newline-and-indent))
 ;; (add-hook 'html-helper-load-hook 'my-html-helper-load-hook)
-
-(setq auto-mode-alist
-      (append '(("\\.x[ms]l\\'" . nxml-mode)
-                ;; ("\\.[sx]?html?\\'" . html-mumamo)
-                ;; ("\\.tpl\\'" . smarty-html-mumamo)
-                ;; ("\\.[sx]?html?\\'" . html-mode)
-                ;; ("\\.tpl\\'" . html-mode)
-                ("\\.sql\\'" . sql-mode))
-              auto-mode-alist))
 
 ;;------------------------------------------------------------
 ;; NXHTML & MUMAMO
