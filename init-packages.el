@@ -28,6 +28,8 @@
                       ack-and-a-half
                       autopair
                       auto-complete
+                      auto-dictionary
+                      bbcode-mode
                       browse-kill-ring
                       deft
                       evil

@@ -81,18 +81,18 @@
 (autoload 'c2c-mode "c2c-mode"
   "Major mode for editing with Camptocamp.org" t)
 
-(autoload 'xbbcode-mode "xbbcode-mode"
-  "Load xbbcode-mode for editing BBCode." t)
+(autoload 'bbcode-mode "bbcode-mode"
+  "Load bbcode-mode for editing BBCode." t)
 
 ;; optional. Make the command easier to remember.
-(defalias 'bbcode 'xbbcode-mode)
+;; (defalias 'bbcode 'xbbcode-mode)
 
 (setq auto-mode-alist
       (append '(("\\.md\\'" . markdown-mode)
                 ("\\.mkd\\'" . markdown-mode)
                 ("\\.markdown\\'" . markdown-mode)
                 ("\\.rst\\'" . rst-mode)
-                ("vimperator" . xbbcode-mode)
+                ("vimperator" . bbcode-mode)
                 ("camptocamp" . c2c-mode))
               auto-mode-alist))
 
