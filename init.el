@@ -239,11 +239,7 @@
 (setq auto-compression-mode t)
 
 ;; Flycheck
-;; Enable flymake for all files
-(add-hook 'find-file-hook 'flycheck-mode)
-;; Enable flymake for Python only
-;; (add-hook 'python-mode-hook 'flycheck-mode)
-(load-library "flymake-cursor")
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Ack
 (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)

@@ -32,13 +32,13 @@
                       bbcode-mode
                       browse-kill-ring
                       deft
+                      dpaste
                       evil
                       evil-leader
                       fill-column-indicator
                       flycheck
-                      flymake
-                      flymake-cursor
                       git-commit-mode
+                      highlight-indentation
                       jedi
                       jinja2-mode
                       js2-mode
