@@ -343,6 +343,7 @@
 (setq evil-default-cursor t
       evil-find-skip-newlines t  ; f, F, t, T skip over newlines to find a character
       ;; evil-move-cursor-back nil  ; don't move backwards when exiting Insert state
+      ;; evil-want-visual-char-semi-exclusive t
       )
 
 (setq evil-leader/leader ","
@@ -359,7 +360,7 @@
                 idlwave-shell-electric-debug-mode))
   (push mode evil-emacs-state-modes))
 
-(define-key evil-normal-state-map (kbd "C-:") 'eval-expression)
+;; (define-key evil-normal-state-map (kbd "C-:") 'eval-expression)
 (define-key evil-normal-state-map (kbd "SPC") 'hs-toggle-hiding)
 (define-key evil-normal-state-map (kbd "C-b") 'ido-switch-buffer)
 
@@ -377,14 +378,18 @@
   "k" 'kill-buffer-and-window
   "K" 'kill-this-buffer
   "d" 'dired-jump
-  "m" 'compile
+  "g" 'compile
 
   "n" 'split-window-horizontally
+  "v" 'split-window-vertically
   "c" 'delete-window
   "N" 'make-frame-command
   "C" 'delete-frame
 
-  "g" 'magit-status)
+  "m" 'magit-status)
+
+(require 'surround)
+(global-surround-mode 1)
 
 ;;----------------------------------------------------------------------------
 ;; Customize configuration

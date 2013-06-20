@@ -37,6 +37,7 @@
                       evil-leader
                       fill-column-indicator
                       flycheck
+                      gist
                       git-commit-mode
                       highlight-indentation
                       jedi
@@ -47,6 +48,7 @@
                       magit
                       markdown-mode
                       multi-web-mode
+                      muttrc-mode
                       php-mode
                       python
                       pkgbuild-mode
@@ -54,6 +56,7 @@
                       rainbow-mode
                       scss-mode
                       smart-tab
+                      surround
                       undo-tree
                       virtualenv
                       yaml-mode
