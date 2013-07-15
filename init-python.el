@@ -66,6 +66,41 @@
 ;;               (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
 ;;               (local-set-key (kbd "M-n") 'flymake-goto-next-error))))
 
+(after 'flycheck
+       (flycheck-declare-checker flake8-python2
+         "A Python syntax and style checker using Flake8.
+
+For best error reporting, use Flake8 2.0 or newer.
+
+See URL `http://pypi.python.org/pypi/flake8'."
+         :command '("flake8-python2"
+                    (config-file "--config" flycheck-flake8rc)
+                    (option "--max-complexity"
+                            flycheck-flake8-maximum-complexity
+                            flycheck-option-int)
+                    (option "--max-line-length"
+                            flycheck-flake8-maximum-line-length
+                            flycheck-option-int)
+                    source-inplace)
+         :error-patterns
+         '(("^\\(?1:.*?\\):\\(?2:[0-9]+\\):\\(?:\\(?3:[0-9]+\\):\\)? \\(?4:E[0-9]+.*\\)$"
+            error)
+           ("^\\(?1:.*?\\):\\(?2:[0-9]+\\):\\(?:\\(?3:[0-9]+\\):\\)? \\(?4:F[0-9]+.*\\)$"
+            warning)                           ; Flake8 >= 2.0
+           ("^\\(?1:.*?\\):\\(?2:[0-9]+\\):\\(?:\\(?3:[0-9]+\\):\\)? \\(?4:W[0-9]+.*\\)$"
+            warning)                           ; Flake8 < 2.0
+           ("^\\(?1:.*?\\):\\(?2:[0-9]+\\):\\(?:\\(?3:[0-9]+\\):\\)? \\(?4:C[0-9]+.*\\)$"
+            warning)                           ; McCabe complexity in Flake8 > 2.0
+           ("^\\(?1:.*?\\):\\(?2:[0-9]+\\):\\(?:\\(?3:[0-9]+\\):\\)? \\(?4:N[0-9]+.*\\)$"
+            warning)                           ; pep8-naming Flake8 plugin.
+           ;; Syntax errors in Flake8 < 2.0, in Flake8 >= 2.0 syntax errors are caught
+           ;; by the E.* pattern above
+           ("^\\(?1:.*\\):\\(?2:[0-9]+\\): \\(?4:.*\\)$" error))
+         :modes 'python-mode)
+
+       (add-to-list 'flycheck-checkers 'flake8-python2)
+)
+
 ;;----------------------------------------------------------------------------
 (add-hook 'python-mode-hook
           (lambda ()

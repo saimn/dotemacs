@@ -17,6 +17,13 @@
 ;;----------------------------------------------------------------------------
 ;; paths
 ;;----------------------------------------------------------------------------
+
+(defmacro after (file &rest forms)
+  "Evaluate FORMS after FILE is loaded."
+  (declare (indent 1))
+  `(eval-after-load ,file
+     '(progn ,@forms)))
+
 ;; Load Path
 (let ((default-directory "~/.emacs.d/vendor/"))
   (setq load-path
