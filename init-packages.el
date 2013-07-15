@@ -57,6 +57,7 @@
                       scss-mode
                       smart-tab
                       surround
+                      tangotango-theme
                       undo-tree
                       virtualenv
                       yaml-mode
