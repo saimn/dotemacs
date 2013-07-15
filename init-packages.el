@@ -50,6 +50,7 @@
                       multi-web-mode
                       muttrc-mode
                       php-mode
+                      powerline
                       python
                       pkgbuild-mode
                       popwin

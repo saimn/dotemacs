@@ -261,7 +261,7 @@
 
 ;; powerline
 (require 'powerline)
-(powerline-default-center)
+(powerline-center-theme)
 
 ;; distinguish files with the same name
 (require 'uniquify)
