@@ -8,6 +8,7 @@ anything-*
 customize.el
 init-priv.el
 places
+projectile-bookmarks.eld
 tramp
 auto-save-list/
 backups/

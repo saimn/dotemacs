@@ -39,6 +39,7 @@
                       flycheck
                       gist
                       git-commit-mode
+                      grizzl
                       highlight-indentation
                       jedi
                       jinja2-mode
@@ -51,6 +52,7 @@
                       muttrc-mode
                       php-mode
                       powerline
+                      projectile
                       python
                       pkgbuild-mode
                       popwin

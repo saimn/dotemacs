@@ -263,6 +263,11 @@
 (require 'powerline)
 (powerline-center-theme)
 
+;; projectile
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
+
 ;; distinguish files with the same name
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
