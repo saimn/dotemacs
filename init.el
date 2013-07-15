@@ -72,7 +72,6 @@
 
 ;;(require 'init-c)         ; C
 (require 'init-functions)
-(require 'init-idlwave)   ; IDL - IDLwave
 ;; (require 'init-latex)     ; LaTeX mode
 ;; (require 'init-lisp)      ; Emacs-Lisp
 (require 'init-org)
@@ -210,9 +209,6 @@
                          (name . "^\\*Messages\\*$")
                          (name . "^\\*vc\\*$")
                          (name . "^\\*Warnings\\*$")))
-               ("IDL" (or
-                       (mode . idlwave-mode)
-                       (name . "^\\*idl\\*$")))
                ("Org" (or
                        (name . "^\\*Calendar\\*$")
                        (name . "^diary$")
@@ -361,10 +357,7 @@
 (evil-mode 1)
 
 (dolist (mode '(inferior-emacs-lisp-mode
-                pylookup-mode
-                idlwave-mode
-                idlwave-shell-mode
-                idlwave-shell-electric-debug-mode))
+                pylookup-mode))
   (push mode evil-emacs-state-modes))
 
 ;; (define-key evil-normal-state-map (kbd "C-:") 'eval-expression)

@@ -39,7 +39,7 @@
 
 (dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode
                 html-mode nxml-mode sh-mode smarty-mode lisp-mode markdown-mode
-                js3-mode css-mode less-css-mode scss-mode idlwave-mode))
+                js3-mode css-mode less-css-mode scss-mode))
   (add-to-list 'ac-modes mode))
 
 ;; custom keybindings to use tab, enter and up and down arrows
